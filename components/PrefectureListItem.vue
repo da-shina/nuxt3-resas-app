@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-    defineProps(['prefName'])
+    const props = defineProps<{
+        prefName: string
+        prefCode: number
+    }>();
 </script>
 <template>
     <div>{{ prefName }}</div>

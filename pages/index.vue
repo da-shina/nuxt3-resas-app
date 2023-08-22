@@ -15,8 +15,9 @@
   <div>
     <h1>都道府県一覧</h1>
     <PrefectureListItem
-      v-for="post in posts.value"
+      v-for="post in posts.result"
       :key="post.prefCode"
+      :prefCode="post.prefCode"
       :prefName="post.prefName"
     />
   </div>
