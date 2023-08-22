@@ -1,3 +1,12 @@
+# Nuxt 3 RESAS App
+RESASのAPIを利用して、都道府県別の人口推移を表示する。
+
+## 事前に必要な環境設定
+プロジェクト直下に .env ファイルを作成し APIキーを記載する。
+API_KEY = 'XXXXXXXXXXXXXX'
+
+--
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
