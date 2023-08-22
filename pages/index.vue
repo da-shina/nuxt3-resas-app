@@ -14,12 +14,14 @@
 <template>
   <div>
     <h1>都道府県一覧</h1>
+    <ul>
     <PrefectureListItem
       v-for="post in posts.result"
       :key="post.prefCode"
       :prefCode="post.prefCode"
       :prefName="post.prefName"
     />
+    </ul>
   </div>
 </template>
 
