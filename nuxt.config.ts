@@ -9,7 +9,5 @@ export default defineNuxtConfig({
     API_KEY: process.env.RESAS_API_KEY,
   },
 
-  target: 'static',
-
 });
 
