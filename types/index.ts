@@ -1,7 +1,6 @@
 export interface Prefectures {
-    prefCode: number;
-    prefName: string;
+  prefCode: number;
+  prefName: string;
 }
 
-export interface PopulationPerYear {
-}
+export interface PopulationPerYear {}
