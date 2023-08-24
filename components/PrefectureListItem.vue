@@ -5,6 +5,7 @@ const props = defineProps<{
 }>();
 const isChecked = ref(false);
 </script>
+
 <template>
   <li>
     <input

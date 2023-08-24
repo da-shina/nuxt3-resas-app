@@ -2,10 +2,12 @@
 const props = defineProps<{
   prefName: string;
   prefCode: number;
+  populationData: any;
 }>();
 
+/*
 const runtimeConfig = useRuntimeConfig();
-const { data, error, pending } = await useFetch(
+const { data, pending, error } = await useFetch(
   runtimeConfig.public.API_BASE_URL + "population/composition/perYear",
   {
     headers: {
@@ -15,28 +17,19 @@ const { data, error, pending } = await useFetch(
       cityCode: "-",
       prefCode: props.prefCode,
     },
-    async onRequestError({ request, options, error }) {
-      console.log("[fetch request error]", request, options, error);
-    },
-    async onResponseError({ request, response, options }) {
-      console.log(
-        "[fetch respons error]",
-        request,
-        response.status,
-        response.body
-      );
-    },
   }
 );
 console.log("props.prefCode", props.prefCode);
 console.log("error", error.value);
-console.log("data", data.value);
+console.log("data", data.value.result.data);
+*/
 </script>
+
 <template>
   <h3>{{ prefName }} の人口推移</h3>
   <table>
     <tr>
-      <td>{{ data }}</td>
+      <td>{{ populationData }}</td>
     </tr>
   </table>
 </template>

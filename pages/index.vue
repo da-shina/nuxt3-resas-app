@@ -9,18 +9,30 @@ const { data, error, pending } = await useFetch(
     },
   }
 );
-console.log("error", error.value);
-console.log('data', data.value);
+//console.log("error", error.value);
+//console.log("data", data.value);
 
-/*
-  definePageMeta({
-    key: 'index',
-    show: false,
-    currentItem: ref(null),
-  })
-  */
-const currentItem = ref<any>(null);
-const show = ref<boolean>(false);
+const currentPrefCode = ref<number>(0);
+const currentPopulationData = ref<any>(null);
+
+watch(currentPrefCode.value, async () => {
+  const { data, pending, error } = await useFetch(
+    runtimeConfig.public.API_BASE_URL + "population/composition/perYear",
+    {
+      headers: {
+        "X-API-KEY": runtimeConfig.API_KEY,
+      },
+      query: {
+        prefCode: currentPrefCode.value,
+        cityCode: "-",
+      },
+    }
+  );
+  console.log("prefCode", currentPrefCode.value);
+  console.log("error", error.value);
+  console.log("data", data.value);
+  //currentPopulationData = data.value.result.data;
+});
 </script>
 
 <template>
@@ -35,17 +47,14 @@ const show = ref<boolean>(false);
         :key="item.prefCode"
         :prefCode="item.prefCode"
         :prefName="item.prefName"
-        @click="
-          currentItem = item;
-          show = true;
-        "
+        @click="currentPrefCode = item.prefCode"
       />
     </ul>
     <h2>人口構成</h2>
-    <LazyPopulationPane
-      v-if="show && currentItem"
-      :prefName="currentItem.prefName"
-      :prefCode="currentItem.prefCode"
+    <PopulationPane
+      v-if="currentPopulationData"
+      :prefCode="currentPrefCode"
+      :populationData="currentPopulationData"
     />
   </div>
 </template>
