@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-//import { Prefectures } from '~/types'
+//import { Prefectures } from "~/types";
 const runtimeConfig = useRuntimeConfig();
 const { data, error, pending } = await useFetch(
   runtimeConfig.public.API_BASE_URL + "prefectures",
@@ -12,10 +12,10 @@ const { data, error, pending } = await useFetch(
 //console.log("error", error.value);
 //console.log("data", data.value);
 
-const currentPrefCode = ref<number>(0);
+const currentPrefCode = ref<any>(null);
 const currentPopulationData = ref<any>(null);
 
-watch(currentPrefCode.value, async () => {
+watch(currentPrefCode, async () => {
   const { data, pending, error } = await useFetch(
     runtimeConfig.public.API_BASE_URL + "population/composition/perYear",
     {
@@ -26,12 +26,12 @@ watch(currentPrefCode.value, async () => {
         prefCode: currentPrefCode.value,
         cityCode: "-",
       },
+      server: true,
     }
   );
   console.log("prefCode", currentPrefCode.value);
-  console.log("error", error.value);
+  console.log("error", pending.value);
   console.log("data", data.value);
-  //currentPopulationData = data.value.result.data;
 });
 </script>
 
