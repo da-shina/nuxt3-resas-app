@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 const runtimeConfig = useRuntimeConfig();
 const { data, pending, error } = await useFetch(
-  runtimeConfig.public.API_BASE_URL + "population/composition/perYear",
+  "/api/v1/population/composition/perYear",
   {
+    baseURL: runtimeConfig.public.API_BASE_URL,
     headers: {
       "X-API-KEY": runtimeConfig.API_KEY,
     },
