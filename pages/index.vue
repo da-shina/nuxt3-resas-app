@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-//import { Prefectures } from "~/types";
 const runtimeConfig = useRuntimeConfig();
-const { data, error, pending } = await useFetch(
-  runtimeConfig.public.API_BASE_URL + "prefectures",
-  {
-    headers: {
-      "X-API-KEY": runtimeConfig.API_KEY,
-    },
-  }
-);
+const { data, error, pending } = await useFetch("/api/v1/prefectures", {
+  baseURL: runtimeConfig.public.API_BASE_URL,
+  headers: {
+    "X-API-KEY": runtimeConfig.API_KEY,
+  },
+});
 //console.log("error", error.value);
 //console.log("data", data.value);
 
@@ -17,8 +14,9 @@ const currentPopulationData = ref<any>(null);
 
 watch(currentPrefCode, async () => {
   const { data, pending, error } = await useFetch(
-    runtimeConfig.public.API_BASE_URL + "population/composition/perYear",
+    "/api/v1/population/composition/perYear",
     {
+      baseURL: runtimeConfig.public.API_BASE_URL,
       headers: {
         "X-API-KEY": runtimeConfig.API_KEY,
       },
