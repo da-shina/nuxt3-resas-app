@@ -11,32 +11,35 @@ watch(currentCode, async () => {
       cityCode: "-",
     },
   });
-  prefData.value = data;
+  prefData.value = data.value.result;
 });
 </script>
 
 <template>
-  <h2>{{ currentName }} の人口推移</h2>
-  <div class="flex" v-if="prefData">
-    <table v-for="level_1 in prefData.result.data">
-      <caption>
-        {{
-          level_1.label
-        }}
-      </caption>
-      <tbody>
-        <tr>
-          <th>年</th>
-          <th>人口</th>
-          <th>率</th>
-        </tr>
-        <tr v-for="level_2 in level_1.data">
-          <td>{{ level_2.year }}</td>
-          <td>{{ level_2.value }}</td>
-          <td>{{ level_2.rate }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div v-if="prefData">
+    <h2>{{ currentName }} の人口構成</h2>
+    <p>※実績値と推計値の区切り年：{{ prefData.boundaryYear }}</p>
+    <div class="flex">
+      <table v-for="level_1 in prefData.data">
+        <caption>
+          {{
+            level_1.label
+          }}
+        </caption>
+        <tbody>
+          <tr>
+            <th>年</th>
+            <th>人口</th>
+            <th>率</th>
+          </tr>
+          <tr v-for="level_2 in level_1.data">
+            <td>{{ level_2.year }}</td>
+            <td>{{ level_2.value }}</td>
+            <td>{{ level_2.rate }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -44,7 +47,12 @@ watch(currentCode, async () => {
 .flex {
   display: flex;
 }
-.flex > * {
+.flex > table {
   flex: 1;
+  border: solid 1px;
+}
+td,
+th {
+  text-align: right;
 }
 </style>
