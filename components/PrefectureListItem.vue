@@ -7,13 +7,19 @@ const isChecked = ref(false);
 </script>
 
 <template>
-  <li>
+  <div class="flex-child">
     <input
       type="checkbox"
       v-bind:id="prefCode"
       v-model="isChecked"
       v-bind:value="prefCode"
     />
-    <label v-bind:for="prefCode">{{ prefName }} ： {{ isChecked }}</label>
-  </li>
+    <label v-bind:for="prefCode">{{ prefName }}</label>
+  </div>
 </template>
+
+<style scoped>
+.flex-child {
+  flex: none;
+}
+</style>
