@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const currentCode = useState("currentCode", () => 0);
 const currentName = useState("currentName", () => "");
+//APIより都道府県リストを取得
 const { data } = useFetch("/api/prefectures");
 </script>
 

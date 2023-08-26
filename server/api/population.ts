@@ -1,4 +1,3 @@
-//export defualt async () => {
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const query = getQuery(event);
