@@ -13,11 +13,19 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/vuetify": "^0.1.1",
     "@types/node": "^18.17.3",
+    "autoprefixer": "^10.4.20",
     "netlify-cli": "^19.0.2",
     "nuxt": "^3.6.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.12",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "@mdi/font": "^7.4.47",
+    "chart.js": "^4.4.8",
+    "sass": "^1.85.1",
+    "vue": "^3.3.4",
+    "vue-chartjs": "^5.3.2",
+    "vuetify": "^3.7.15"
   }
 }
