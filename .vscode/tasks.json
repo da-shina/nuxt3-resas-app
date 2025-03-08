@@ -7,6 +7,26 @@
       "problemMatcher": [],
       "label": "npm: dev",
       "detail": "nuxt dev"
+    },
+    {
+      "type": "npm",
+      "script": "audit",
+      "problemMatcher": [],
+      "label": "npm: audit fix",
+      "detail": "npm audit fix"
+    },
+    {
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "label": "npm: test",
+      "detail": "nuxt test"
+    },
+    {
+      "label": "Security Update and Test",
+      "dependsOrder": "sequence",
+      "dependsOn": ["npm: audit fix", "npm: test"],
+      "problemMatcher": []
     }
   ]
 }

@@ -8,4 +8,6 @@ export default defineNuxtConfig({
     },
     API_KEY: process.env.RESAS_API_KEY,
   },
+
+  compatibilityDate: "2025-03-08",
 });
