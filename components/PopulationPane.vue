@@ -40,7 +40,7 @@ const prefectureNames = ref<Map<number, string>>(new Map());
 // 都道府県名を取得
 const { data: prefecturesData } = await useAsyncData<{ result: { prefCode: number; prefName: string }[] }>(
   "prefectures",
-  () => $fetch("/api/prefectures")
+  () => $fetch<{ result: { prefCode: number; prefName: string }[] }>("/api/prefectures")
 );
 
 if (prefecturesData.value?.result) {
