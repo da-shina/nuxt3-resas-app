@@ -3,4 +3,9 @@ export interface Prefectures {
   prefName: string;
 }
 
+export interface Population {
+  year: number;
+  value: number;
+}
+
 export interface PopulationPerYear {}

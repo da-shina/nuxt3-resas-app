@@ -1,33 +1,31 @@
-<script lang="ts" setup>
-const currentCode = useState<number>("currentCode", () => 0);
-const props = defineProps<{
-  prefName: string;
-  prefCode: number;
-}>();
-const isChecked = ref(false);
-
-//他のチェックボックスが選択された時、自身のチェックを解除
-watch(currentCode, () => {
-  if (currentCode.value != props.prefCode) {
-    isChecked.value = false;
-  }
-});
-</script>
-
 <template>
-  <div class="flex-child">
-    <input
-      type="checkbox"
-      v-bind:id="prefCode.toString"
-      v-model="isChecked"
-      v-bind:value="prefCode.toString"
+  <div class="prefecture-item">
+    <v-checkbox
+      :model-value="checked"
+      :label="name"
+      density="compact"
+      hide-details
+      @update:model-value="$emit('update:checked', $event)"
     />
-    <label v-bind:for="prefCode.toString">{{ prefName }}</label>
   </div>
 </template>
 
+<script setup lang="ts">
+defineProps<{
+  name: string
+  checked: boolean
+  value: string | number
+}>()
+
+defineEmits<{
+  'update:checked': [value: boolean]
+}>()
+</script>
+
 <style scoped>
-.flex-child {
-  flex: none;
+.prefecture-item {
+  display: inline-block;
+  min-width: 120px;
+  padding: 4px;
 }
 </style>
