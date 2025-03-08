@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxtjs/vuetify": "^1.12.3",
+    "@nuxtjs/vuetify": "^0.1.1",
     "@types/node": "^18.17.3",
-    "netlify-cli": "^16.1.0",
+    "netlify-cli": "^19.0.2",
     "nuxt": "^3.6.5",
     "typescript": "^5.1.6"
   },

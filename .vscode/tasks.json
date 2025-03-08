@@ -10,23 +10,21 @@
     },
     {
       "type": "npm",
-      "script": "audit",
-      "problemMatcher": [],
-      "label": "npm: audit fix",
-      "detail": "npm audit fix"
-    },
-    {
-      "type": "npm",
       "script": "test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
       "problemMatcher": [],
       "label": "npm: test",
       "detail": "nuxt test"
     },
     {
-      "label": "Security Update and Test",
-      "dependsOrder": "sequence",
-      "dependsOn": ["npm: audit fix", "npm: test"],
-      "problemMatcher": []
+      "type": "shell",
+      "command": "npm audit fix --force",
+      "problemMatcher": [],
+      "label": "npm: audit fix",
+      "detail": "Run npm audit fix with force option"
     }
   ]
 }
