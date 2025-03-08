@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-const currentCode = useState("currentCode", () => 0);
-const currentName = useState("currentName", () => "");
+const currentCode = useState<number>("currentCode", () => 0);
+const currentName = useState<string>("currentName", () => "");
 //APIより都道府県リストを取得
-const { data } = useFetch("/api/prefectures");
+const { data } = useAsyncData<{ result: { prefCode: number; prefName: string }[] }>("prefectures", () =>
+  $fetch<{ result: { prefCode: number; prefName: string }[] }>("/api/prefectures")
+);
 </script>
 
 <template>
@@ -11,7 +13,7 @@ const { data } = useFetch("/api/prefectures");
     <h2>都道府県</h2>
     <div class="flex">
       <PrefectureListItem
-        v-for="item in data.result"
+        v-for="item in data?.result"
         :key="item.prefCode"
         :prefCode="item.prefCode"
         :prefName="item.prefName"

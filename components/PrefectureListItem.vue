@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const currentCode = useState("currentCode", () => 0);
+const currentCode = useState<number>("currentCode", () => 0);
 const props = defineProps<{
   prefName: string;
   prefCode: number;
@@ -8,7 +8,7 @@ const isChecked = ref(false);
 
 //他のチェックボックスが選択された時、自身のチェックを解除
 watch(currentCode, () => {
-  if (currentCode.value != props.prefCode.value) {
+  if (currentCode.value != props.prefCode) {
     isChecked.value = false;
   }
 });
@@ -18,11 +18,11 @@ watch(currentCode, () => {
   <div class="flex-child">
     <input
       type="checkbox"
-      v-bind:id="prefCode"
+      v-bind:id="prefCode.toString"
       v-model="isChecked"
-      v-bind:value="prefCode"
+      v-bind:value="prefCode.toString"
     />
-    <label v-bind:for="prefCode">{{ prefName }}</label>
+    <label v-bind:for="prefCode.toString">{{ prefName }}</label>
   </div>
 </template>
 

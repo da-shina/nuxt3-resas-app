@@ -6,7 +6,7 @@ const prefData = ref<any>(null);
 //現在の都道府県コードが変更された際、APIから該当の都道府県の人口構成を取得
 watch(currentCode, async () => {
   const runtimeConfig = useRuntimeConfig();
-  const { data } = await useFetch("/api/population", {
+  const { data, error } = await useFetch<any>("/api/population", {
     query: {
       prefCode: currentCode.value,
       cityCode: "-",
